@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Catch a shooting star</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body div{margin: 0; overflow: hidden;}
+		video{ top : 0; left : 0; margin: 0; z-index: -1; position: fixed; opacity: 93%; overflow: hidden;}
+
+		.box{ width: 150px; height: 150px; position: absolute; 
+			left: 70px; top: 70px; background: yellow;}
+
+		.t {font-size: 13em; color: white; font-weight: 400; font-family: 'Roboto Condensed';
+				text-align: center; display: flex; justify-content: center; background-color : none; margin-top: 60px;}
+		
+		
+		#star {animation: mm 2.7s infinite;}
+
+		#time{font-family: 'Roboto Condensed'; font-weight: 400; font-size: 4em;
+				color: white; justify-content: center;
+				display: flex; margin-top: 70px;
+				z-index: 3;}
+
+		@keyframes mm{ from{ top: -300% }}
+			
+		
+
+		
+	</style>
+</head>
+
+<body>
+	<video src="./Space.mp4" muted autoplay loop></video>
+	<div id="time"></div>
+	<div class="t">Catch A Shooting Star</div>
+	
+	
+	<script type="text/javascript">
+	setInterval(make, 1000);
+	make();
+	function make(){var a = document.createElement("div");
+		a.id = "star";
+		a.className = "box";
+		a.style.background = "url('star.png') no-repeat";
+		a.style.backgroundSize = "100% auto";
+		var b = Math.random()*window.innerWidth;
+		var c = Math.random()*window.innerHeight;
+		a.style.left = b + "px";
+		a.style.top = c + "px";
+		a.onclick = function(){ a.parentNode.removeChild(a);
+			make();}
+		
+		document.body.appendChild(a);
+		}
+
+	
+		
+
+		var myTimer = setInterval(checkTime, 1000);
+		var d = 0;
+		function checkTime(){
+			d = d + 1;
+			console.log(d);
+			time.innerHTML = (31-d) + "s";
+			if(d == 32){
+				clearInterval(myTimer);
+			time.innerHTML = "finish!";}
+		}
+		
+
+
+	
+
+
+			
+	</script>
+
+
+</body>
+</html>
